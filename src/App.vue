@@ -88,8 +88,8 @@ export default {
     },
     score() {
       return {
-        a: 40 - this.getCurrentScore('a'),
-        b: 40 - this.getCurrentScore('b')
+        a: 501 - this.getCurrentScore('a'),
+        b: 501 - this.getCurrentScore('b')
       } 
     },
     currentLeg() {
@@ -158,6 +158,7 @@ export default {
       return false;
     },
     leg(winner) {
+      this.legStarter = this.otherPlayer;
       this.players[winner].legs += 1;
       this.pushThrows('a');
       this.pushThrows('b');
@@ -168,7 +169,6 @@ export default {
       this.players[player].throws = [];
     },
     turn() {
-      this.legStarter = this.otherPlayer;
       this.currentPlayer = this.otherPlayer;
       this.currentScores = [];
       this.$refs.leftlegs.scrollTop = this.$refs.leftlegs.scrollHeight + 80;
