@@ -96,7 +96,6 @@ export default {
       return this.players.a.legs + this.players.b.legs + 1; 
     },
     throwNumber() {
-      console.log(this.allThrows);
       return this.allThrows[this.currentPlayer].length * 3 + this.currentScores.length + 1;
     },
     allThrows() {
@@ -158,18 +157,18 @@ export default {
       return false;
     },
     leg(winner) {
-      this.legStarter = this.otherPlayer;
+      this.legStarter = this.legStarter === 'a' ? 'b' : 'a';
       this.players[winner].legs += 1;
       this.pushThrows('a');
       this.pushThrows('b');
-      this.turn();
+      this.turn(true);
     },
     pushThrows(player) {
       this.players[player].previousThrows.push(this.players[player].throws);
       this.players[player].throws = [];
     },
-    turn() {
-      this.currentPlayer = this.otherPlayer;
+    turn(win) {
+      this.currentPlayer = win ? this.legStarter : this.otherPlayer;
       this.currentScores = [];
       this.$refs.leftlegs.scrollTop = this.$refs.leftlegs.scrollHeight + 80;
       this.$refs.rightlegs.scrollTop = this.$refs.rightlegs.scrollHeight + 80;
