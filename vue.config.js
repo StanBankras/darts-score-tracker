@@ -1,5 +1,5 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/darts-score-tracker/'
+    ? '/darts-score-tracker/build/'
     : '/'
 }
