@@ -4,12 +4,10 @@
       <div :class="{ active: currentPlayer === 'a', starter: legStarter === 'a' }" class="score left">{{ score.a }}</div>
       <div :class="{ active: currentPlayer === 'b', starter: legStarter === 'b' }" class="score">{{ score.b }}</div>
       <div class="legs left">
-        <p>LEGS</p>
-        <p>{{ players.a.legs }}</p>
+        <p>LEGS: {{ players.a.legs }}</p>
       </div>
       <div class="legs">
-        <p>LEGS</p>
-        <p>{{ players.b.legs }}</p>
+        <p>LEGS: {{ players.b.legs }}</p>
       </div>
     </div>
     <div class="leg-throws">
@@ -48,7 +46,7 @@
       </div>
     </div>
     <div class="specials">
-      <div class="single multiplier" :class="{ active: multiplier === 1 }" @click="multiplier = 1">1x</div>
+      <div class="single multiplier" style="" :class="{ active: multiplier === 1 }" @click="multiplier = 1">1x</div>
       <div class="double multiplier" :class="{ active: multiplier === 2 }" @click="multiplier = 2">2x</div>
       <div class="triple multiplier" :class="{ active: multiplier === 3 }" @click="multiplier = 3">3x</div>
       <div @click="submit({ base: 25, mult: 1, leg: currentLeg, id: throwNumber })" class="green"></div>
@@ -128,7 +126,7 @@ export default {
     }
   },
   mounted() {
-    for(let i = 1; i <= 20; i++) {
+    for(let i = 0; i <= 20; i++) {
       this.numbers.unshift(i);
     }
   },
@@ -204,7 +202,7 @@ export default {
     gap: 0.3rem;
     div {
       background-color: var(--main-darken);
-      padding: 1rem 0;
+      padding: 0.7rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -280,7 +278,7 @@ export default {
       padding: 1rem;
       text-align: center;
       font-weight: bold;
-      font-size: 30px;
+      font-size: 23px;
       &.active {
         background-color: var(--main-lighten);
       }
